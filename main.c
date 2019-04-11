@@ -16,10 +16,13 @@ int main(int argc, char* argv[]){
 		key = atoi(argv[2]);
 		text = strdup(argv[3]);
 	}
-	else
+	else{
 		text = strdup(argv[2]);
+	}
+	size_t textlen = strlen(text);
+	char retarr[textlen];
 	switch(select){
-		case 1:
+		case 1: printf("%s\n", rotencr(text, retarr, key, textlen));
 		break;
 		case 2:
 		break;
