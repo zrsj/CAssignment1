@@ -32,7 +32,7 @@
 #define _Y N
 #define _Z M
 /*Function definitions*/
-char* rotencr(char message[], int key, size_t arrlen);
+char* rotencr(char message[], char retarr[], int key, size_t arrlen);
 void rotdecr(char ciph[], int key, size_t arrlen);
 char* subencr(char message[]);
 void subdecr(char ciph[]);
@@ -40,8 +40,17 @@ void ciphrotdecr(char ciph[]);
 void ciphsubdecr(char ciph[]);
 void printerr();
 /*Function Implementations*/
-char* rotencr(char message[], int key, size_t arrlen){
-
+char* rotencr(char message[], char retarr[], int key, size_t arrlen){
+	for(int i = 0; i < arrlen; i++){
+		if(message[i] == ' '){
+			retarr[i] = ' ';
+			continue;
+		}
+		retarr[i] = ((message[i] - 65) + key) % (26);
+		retarr[i] += 65;
+	}
+	retarr[arrlen - 1] = '\0';
+	return retarr;
 }
 
 void printerr(){
